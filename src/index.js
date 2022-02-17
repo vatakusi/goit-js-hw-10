@@ -48,8 +48,6 @@ import { functions } from 'lodash';
 import './css/styles.css';
 import Notiflix from 'notiflix';
 import { fetchCountries } from './fetchCountries';
-
-// import debounce from 'lodash.debounce';
 const debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
@@ -63,7 +61,6 @@ const refs = {
 
 refs.input.addEventListener('input', debounce(handleSearch, 300));
 
-console.log(refs.input);
 function handleSearch(e) {
   const eventInput = e.target.value.trim();
 
@@ -84,9 +81,6 @@ function handleSearch(e) {
       } else {
         Notiflix.Notify.info('Too many entries');
       }
-
-      // const markup = dataCountries.flatMap(country => `<li>${country}</li>`).join('');
-      // refs.list.insertAdjacentHTML('afterbegin', markup);
     })
     .catch(error => {
       Notiflix.Notify.failure('Oops, there is no country with that name');
@@ -96,8 +90,10 @@ function handleSearch(e) {
 function renderCountry(dataCountries) {
   const markup = dataCountries
     .map(({ name, capital, population, flags, languages }) => {
-      return `<img src="${flags.svg}" alt="${name.common}" class="flag" width="50px"/>
-    <h2>${name.official}</h2>
+      return `<div class="sinle-country"><img src="${flags.svg}" alt="${
+        name.common
+      }" class="flag" width="36px"/>
+    <h2 class="sinle-name">${name.official}</h2></div>
     <p><span>Capital: </span>${capital}</p>
     <p><span>Population: </span>${population}</p>
     <p><span>Languages: </span>${Object.values(languages).join(', ')}</p>`;
@@ -110,8 +106,8 @@ function renderList(dataCountries) {
   const markup = dataCountries
     .map(({ name, flags }) => {
       return `<li>
-      <img src="${flags.svg}" alt="${name.common}" class="flag" width="50px"/>
-    <h2>${name.official}</h2>
+      <img src="${flags.svg}" alt="${name.common}" class="flag" width="30px"/>
+    <p class="list-head">${name.official}</p>
     </li>`;
     })
     .join('');
@@ -122,4 +118,3 @@ function clearRender() {
   refs.list.innerHTML = '';
   refs.div.innerHTML = '';
 }
-///// разметка для стран:

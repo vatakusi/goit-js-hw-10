@@ -18,3 +18,58 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-right: 15px;
+}
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.list-head {
+  font-size: 18px;
+}
+
+.sinle-country {
+  display: flex;
+  align-items: center
+}
+
+.sinle-name {
+  font-size: 36px;
+}
+
+span {
+  font-weight: 700;
+}
